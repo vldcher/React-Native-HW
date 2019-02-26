@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
 
-export default class MovieDetails extends Component { 
+export default class MovieDetails extends Component {
 
   render() {
 
-    const {item} = this.props.navigation.state.params;
+    const {item} = this.props.navigation.state.params; // const { navigation: { state: { params: { item: { Poster, Title, Year } } } } = this.props; is preferable
 
-    console.log(item.Poster);
+    console.log(item.Poster); //remove
 
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}> // move to style object
         <ScrollView>
-             <Image 
+             <Image
                 style = {styles.image}
                 source = {{uri: item.Poster}}
                 resizeMode = "contain"/>
@@ -40,9 +40,9 @@ const styles = StyleSheet.create({
         margin: 20,
         fontSize: 14,
         fontWeight: 'bold',
-        
+
     },
     paragraph: {
         margin: 10
     }
-});
+}); // better to store styles in separate file

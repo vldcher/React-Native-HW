@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, RefreshControl } from 'react-native';
 import { fetchMovies } from './../../api';
-import MoviesList from './../../components/moviesList';
+import MoviesList from './../../components/moviesList'; // can be shortened. import from index
 import Spinner from './../../components/spinner';
 import sharedStyle from './../../shared/style';
 
-export default class FeedScreen extends Component { 
+export default class FeedScreen extends Component {
 
   state = {
       loading: false,
@@ -21,27 +21,25 @@ export default class FeedScreen extends Component {
   }
 
   onButtonPress = () => {
-
       this.setState({data:null, loading: true});
-      year = this.state.year;
+      year = this.state.year; // const { year } = this.state;
       fetchMovies(year)
         .then(res => {
             this.setState({loading:false, data:res, year: ''});
-
         })
         .catch( err => {
-            console.log(error);
+            console.log(error); // err
             this.setState({loading:false});
         });
   };
 
 
-  
+
   render() {
     const { loading, data, year, errorMessage } = this.state;
-    let date = new Date().toTimeString().slice(0,9);
+    let date = new Date().toTimeString().slice(0,9); // new Date().toLocaleTimeString()
 
-    return ( 
+    return (
      <SafeAreaView style={sharedStyle.container}>
 
         {loading && (
@@ -55,16 +53,16 @@ export default class FeedScreen extends Component {
             <Text style={sharedStyle.buttonLabel}>Find Movies</Text>
           </TouchableOpacity>
         )}
-      
+
         { data &&
           <ScrollView
             refreshControl={
               <RefreshControl
                 refreshing={this.state.loading}
-                onRefresh={this.onButtonPress}/>}> 
+                onRefresh={this.onButtonPress}/>}>
 
         <Text style = {sharedStyle.timeLabel}>Last Updated {date} </Text>
-        
+
         <Text style={sharedStyle.searchLabel}>Search the movies by year:</Text>
         <TextInput
           style={{height: 40, width: 300, borderColor: 'gray', borderWidth: 0.5}}
@@ -72,12 +70,12 @@ export default class FeedScreen extends Component {
           clearTextOnFocus = {true}
           value={this.state.year}
         />
-        
+
         <TouchableOpacity onPress={this.validateYearInput}>
           <Text style={sharedStyle.buttonLabel}>SEARCH</Text>
         </TouchableOpacity>
 
-        {errorMessage && 
+        {errorMessage &&
           <Text style={sharedStyle.errorMessage}>Please type year from 1940 to 2019.</Text>
         }
 
@@ -89,4 +87,3 @@ export default class FeedScreen extends Component {
     );
   }
 }
-  
