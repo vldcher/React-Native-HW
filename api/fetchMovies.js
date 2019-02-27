@@ -14,16 +14,15 @@ const fetchMovies = async(year) => {
             return new Promise(resolve => {
                 setTimeout(() => {
                   resolve(JSON.parse(storedResult).Search);
-                  console.log()
                 }, fakeTimeout);
             })
         }
     } catch (error) {
         console.log('failed to retrieve stored data', error);
     }
-
-    const response = await axios(fullEndpoint);
+    
     try {
+        const response = await axios(fullEndpoint);
         await AsyncStorage.setItem(fullEndpoint, JSON.stringify(response.data));
     } catch(error) {
         console.log(error);

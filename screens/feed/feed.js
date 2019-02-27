@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, RefreshControl } from 'react-native';
 import { fetchMovies } from './../../api';
-import MoviesList from './../../components/moviesList';
+import MoviesList from '../../components/index';
 import Spinner from './../../components/spinner';
 import sharedStyle from './../../shared/style';
 
@@ -39,7 +39,7 @@ export default class FeedScreen extends Component {
   
   render() {
     const { loading, data, year, errorMessage } = this.state;
-    let date = new Date().toTimeString().slice(0,9);
+    let date = new Date().toLocaleTimeString();
 
     return ( 
      <SafeAreaView style={sharedStyle.container}>

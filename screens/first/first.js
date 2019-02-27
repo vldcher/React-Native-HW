@@ -4,11 +4,10 @@ import CameraRollPicker from 'react-native-camera-roll-picker';
 
 export default class FirstScreen extends Component {
 
+  state = {selected: []};
+
   constructor(props) {
     super(props);
-    this.state = {
-      selected: [],
-    };
     this.getSelectedImages = this.getSelectedImages.bind(this);
   }
 
@@ -21,6 +20,8 @@ export default class FirstScreen extends Component {
   render() {
     let { selected }  = this.state;
 
+    const spinnerUri = 'https://www.companyshop.co.uk/media/1017/media-placeholder.jpg';
+
     return (
       <View style={ styles.container }>
 
@@ -32,7 +33,7 @@ export default class FirstScreen extends Component {
 
         <CameraRollPicker
           groupTypes='All'
-          selected={this.state.selected}
+          selected={selected}
           assetType='All'
           selectSingleItem
           imagesPerRow={3}
@@ -43,17 +44,20 @@ export default class FirstScreen extends Component {
             Selected Media
         </Text>
 
-        { !selected[0] && 
-          <View style={ styles.mediaInput }>
-            <Image
-              source={{ uri: 'https://www.companyshop.co.uk/media/1017/media-placeholder.jpg' }}
-              style={{ width: '100%', height: '100%' }}/>
-          </View> }
-
-        { selected[0] &&
-        <View style={ styles.mediaInput }>
-          <ImageBackground source={{ uri: selected[0].uri }} style={{width: '100%', height: '100%' }}/>   
-        </View> }
+        <View style={styles.mediaInput}>
+            {!selected[0] ? (
+              <Image
+                  source={{ uri: spinnerUri }}
+                  style={styles.image}
+              />
+                )
+                : (
+              <ImageBackground
+                  source={{ uri: selected[0].uri }}
+                  style={styles.image}
+              />
+                )}
+        </View>
 
       </View>
     );

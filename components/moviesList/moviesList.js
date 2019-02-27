@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
+import MovieThumb from '../movieThumb/movieThumb';
 
+class MoviesList extends Component { 
 
-export default class  SearchMovies extends Component { 
+  constructor(props) {
+    super(props);
+  }
 
   renderMovieThumbNail = (item, index) => (
     <MovieThumb key={index} item = {item} navigation = {this.props.navigation}/>
@@ -10,7 +14,7 @@ export default class  SearchMovies extends Component {
 
   render() {
     const { data } = this.props;
-
+    
     if (!data || !data.length) return null;
     return (
       <View>
@@ -21,3 +25,5 @@ export default class  SearchMovies extends Component {
     );
   }
 }
+
+export default MoviesList;

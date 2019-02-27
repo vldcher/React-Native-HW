@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-
+import { Text, Image, TouchableOpacity } from 'react-native';
+import style from './style';
 
 export default class MoviesThumb extends Component { 
 
@@ -16,7 +16,7 @@ export default class MoviesThumb extends Component {
             style = {styles.container}
         >
             <Image 
-                style = { styles.image }
+                style = { style.image }
                 source = {{ uri: Poster }}
                 resizeMode = "contain"/>
             <Text>{ Title }</Text>
@@ -24,16 +24,3 @@ export default class MoviesThumb extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        height: 500,
-        borderColor: 'blue',
-        marginVertical: 15,
-        borderRadius: 6,
-    },
-    image: {
-        flex: 1,
-    },
-});
-  

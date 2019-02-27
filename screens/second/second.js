@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View,StyleSheet} from 'react-native';
+import {Text, View} from 'react-native';
 import sharedStyle from './../../shared/style';
 
 
