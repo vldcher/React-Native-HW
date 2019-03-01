@@ -1,1 +1,1 @@
-export { default } from './movieThumb';
+export * from './movieThumb';

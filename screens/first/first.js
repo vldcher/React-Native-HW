@@ -6,10 +6,10 @@ export default class FirstScreen extends Component {
 
   state = {selected: []};
 
-  constructor(props) {
-    super(props);
-    this.getSelectedImages = this.getSelectedImages.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.getSelectedImages = this.getSelectedImages.bind(this);
+  // }
 
   getSelectedImages(images) {
     this.setState({

@@ -3,13 +3,11 @@ import { View, Text, Image, ScrollView } from 'react-native';
 
 import style from './style';
 
-class MovieDetails extends Component { 
+export class MovieDetails extends Component { 
 
   render() {
 
-    const {item} = this.props.navigation.state.params;
-
-    console.log(item.Poster);
+    const { navigation: { state: { params: { item }  }  }  } = this.props;
 
     return (
         <View style={
@@ -31,5 +29,3 @@ class MovieDetails extends Component {
     );
   }
 }
-
-export default MovieDetails;

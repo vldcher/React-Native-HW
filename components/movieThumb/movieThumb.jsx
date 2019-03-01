@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, Image, TouchableOpacity } from 'react-native';
 import style from './style';
 
-export default class MoviesThumb extends Component { 
+export class MovieThumb extends Component { 
 
   render() {
     const { Poster, Title } = this.props.item;

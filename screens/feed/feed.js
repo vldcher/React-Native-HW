@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, RefreshControl } from 'react-native';
 import { fetchMovies } from './../../api';
-import MoviesList from '../../components/index';
-import Spinner from './../../components/spinner';
+import MoviesList from '../../components';
+import Spinner from '../../components';
 import sharedStyle from './../../shared/style';
 
 export default class FeedScreen extends Component { 
